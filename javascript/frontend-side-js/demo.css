@@ -1,0 +1,44 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+.section-container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+.cardLists {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: start;
+	width: 500px;
+	margin: 20px 0;
+}
+.form-container {
+	display: flex;
+	flex-direction: row;
+	height: 42px;
+	width: 500px;
+	gap: 12px;
+}
+input {
+	display: flex;
+	height: auto;
+	width:500px;
+	border: 1.5px outset #6b7280;
+	border-radius: 12px;
+	padding: 5px 12px;
+	font-size: 25px;
+	color: #404040;
+}
+input:focus {
+	outline: none;
+}
+.submit-bttn {
+	height: 100%;
+	width: 100%;
+	text-transform: uppercase;
+}
