@@ -6,19 +6,19 @@ submitForm.addEventListener('submit', (event) => {
 	const inputItem = input.value;
 	input.value = "";
 
-	const itemCard = document.createElement("div");
-	const cardLabel = document.createElement("span");
-	const cardAction = document.createElement("button");
-	document.get
+	const listItem = document.createElement("li");
+	const listAction = document.createElement("button");
+	listAction.className = "remove-list";
+	
+	listItem.textContent = inputItem;
+	listAction.textContent = "Remove";
+	listItem.appendChild(listAction);
+	itemLists.appendChild(listItem);
 
-	itemCard.appendChild(cardLabel);
-	cardLabel.textContent = inputItem;
-	itemCard.appendChild(cardAction);
-	cardAction.textContent = "Remove";
-	itemLists.appendChild(itemCard);
+	itemLists.insertAdjacentElement("afterbegin", listItem);
 
-	cardAction.addEventListener("click", () => {
-		itemLists.removeChild(itemCard);
+	listAction.addEventListener("click", () => {
+		itemLists.removeChild(listItem);
 	});
 
 	input.focus();
