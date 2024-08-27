@@ -1,10 +1,14 @@
 package com.inventory.stockflow.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
@@ -35,4 +39,8 @@ public class SalesRepresentative {
 
     @Column(name = "password", nullable = false, unique = false)
     private String password;
+
+    @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
 }
