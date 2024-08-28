@@ -1,5 +1,10 @@
 package com.inventory.stockflow.entity;
 
+import java.security.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,4 +25,12 @@ public class Branch {
 
     @Column(name = "location", nullable = false, unique = false)
     private String branchLocation;
+
+    @CreationTimestamp
+    @Column(name = "createdAt")
+    private Timestamp createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updatedAt")
+    private Timestamp updatedAt;
 }
