@@ -1,5 +1,10 @@
 package com.inventory.stockflow.entity;
 
+import java.security.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,4 +36,12 @@ public class Products {
     @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "prodcategory_id")
     private ProductCategory productCategory;
+
+    @CreationTimestamp
+    @Column(name = "createdAt")
+    private Timestamp createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updatedAt")
+    private Timestamp updatedAt;
 }

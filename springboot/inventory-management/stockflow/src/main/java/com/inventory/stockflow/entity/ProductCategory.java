@@ -1,5 +1,10 @@
 package com.inventory.stockflow.entity;
 
+import java.security.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,4 +28,12 @@ public class ProductCategory {
 
     @Column(name = "status", nullable = false, unique = false)
     private String price;
+
+    @CreationTimestamp
+    @Column(name = "createdAt")
+    private Timestamp createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updatedAt")
+    private Timestamp updatedAt;
 }
