@@ -1,0 +1,38 @@
+services:
+  spring-postgresdb:
+    image: postgres
+    container_name: postgresdb-test.build
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
+    ports:
+      - $PSQL_PORT:$PSQL_PORT
+    expose:
+      - $PSQL_PORT
+    volumes:
+      - postgresdb_data:/var/lib/postgres/data
+
+  spring-webservice:
+    container_name: webservice-test.build
+    depends_on:
+      - spring-postgresdb
+    build: .
+    restart: on-failure
+    env_file: ./.env
+    ports:
+      - $SPRING_APP_PORT:$SPRING_APP_PORT
+    expose:
+      - $SPRING_APP_PORT
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - SPRING_DATASOURCE_URL=$SPRING_DATASOURCE_URL
+      - SPRING_DATASOURCE_USERNAME=$SPRING_DATASOURCE_USERNAME
+      - SPRING_DATASOURCE_PASSWORD=$SPRING_DATASOURCE_PASSWORD
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+volumes:
+  postgresdb_data:
