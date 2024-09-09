@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
@@ -22,8 +24,9 @@ public class SalesRepresentativeController {
     }
 
     @PostMapping("createSalesRepAccount")
-    public SalesRepresentative createSalesRepsAccount(@RequestBody SalesRepresentative salesRepresentative) {
-        return salesRepServices.createSalesRepresentative(salesRepresentative);
+    public ResponseEntity<SalesRepresentative> createSalesRepsAccount(@RequestBody SalesRepresentative salesRepresentative) {
+        SalesRepresentative createdNewSalesRepresentative = salesRepServices.createSalesRepresentative(salesRepresentative);
+        return new ResponseEntity<>(createdNewSalesRepresentative, HttpStatus.CREATED);
     }
 
     @GetMapping("getAllSalesRepresentatives")
