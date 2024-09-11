@@ -7,5 +7,5 @@ import com.packages.stockoverflow.entity.SalesRepresentative;
 
 @Repository
 public interface SalesRepresentativeRepo extends JpaRepository <SalesRepresentative, Long> {
-
+    // public SalesRepresentative findByEmail(String email);
 }
