@@ -1,3 +1,10 @@
+# JavaScript DOM manipulation
+DOM allows developers to interact and manipulate web page contents like text, images, links and other elements present on the page.
+
+## What is DOM?
+> Stands for Document Object Model.
+> Represents the document as nodes and objects, in this way you can interact and manipulate with the structure, style and content of the web pages.
+
 > [!TIP]
 > Level up your HTML coding skills with these tricks.
 
