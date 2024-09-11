@@ -1,4 +1,4 @@
-[!TIP]
+> [!TIP]
 > Level up your HTML coding skills with these tricks.
 
 ```
