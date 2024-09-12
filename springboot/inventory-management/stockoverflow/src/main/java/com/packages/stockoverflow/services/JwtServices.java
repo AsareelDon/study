@@ -3,6 +3,10 @@ package com.packages.stockoverflow.services;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.packages.stockoverflow.dto.JwtPayloadDto;
+
 import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -24,8 +28,20 @@ public class JwtServices {
     @Value("${security.jwt.expiration-time-ms}")
     private Long expirationTime;
 
-    public String extractUserFromToken(String headerToken) {
-        return extractClaims(headerToken, Claims::getSubject);
+    private final ObjectMapper payloadDtoMapper = new ObjectMapper();
+
+    public JwtPayloadDto extractUserFromToken(String headerToken) {
+        return extractClaims(headerToken, claims -> {
+            String payloadJson = claims.getSubject();
+            try {
+                return payloadDtoMapper.readValue(payloadJson, JwtPayloadDto.class);
+            } catch (JsonProcessingException e) {
+                throw new ResponseStatusException(
+                    HttpStatus.INTERNAL_SERVER_ERROR, 
+                    "Deserialization Error: There's a problem when retrieving object from claims", e
+                );
+            }
+        });
     }
 
     /**
@@ -39,7 +55,23 @@ public class JwtServices {
         final Claims claims = extractAllClaims(headerToken);
         return claimResolver.apply(claims);
     }
-    
+
+    public String generateToken(JwtPayloadDto payloadDto) throws JsonProcessingException {
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+        SecretKey key = Keys.hmacShaKeyFor(keyBytes);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String payload = objectMapper.writeValueAsString(payloadDto);
+
+        return Jwts
+            .builder()
+            .subject(payload)
+            .issuedAt(new Date(System.currentTimeMillis()))
+            .expiration(new Date(System.currentTimeMillis() + expirationTime))
+            .signWith(key)
+            .compact();
+    }
+
     /**
      * @param headerToken
      * @return Claims -> values that are encrypted in jwt
