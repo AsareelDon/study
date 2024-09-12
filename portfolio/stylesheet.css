@@ -2,8 +2,8 @@
 
 :root {
     --primary: #3178c6;
-    --nthChild_odd: #ffffff;
-    --nthChild_even: #faf9f8;
+    --nthChild_even: #ffffff;
+    --nthChild_odd: #faf9f8;
     --text_color: #fff9cc;
     --accent: #d6e4f4;
 }
@@ -21,33 +21,51 @@
 header {
     position: fixed;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    /* border: red 1px solid; */
     background-color: var(--primary);
+}
+.portfolioLink {
+    color: var(--text_color);
+    font-weight: bold;
+    font-size: 30px;
+    width: 100%;
+    padding: 0 0 0 3rem;
+    cursor: pointer;
+    /* border: red 1px solid; */
 }
 nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
     padding: 14px 12px;
+    /* border: red 1px solid; */
+
 }
 nav ul {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 400px;
     list-style: none;
+    /* border: red 1px solid; */
+
 }
 nav ul li a {
     position: relative;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 21px;
+    font-weight: bold;
     font-weight: 400;
     padding-bottom: 4px;
     transition: .3s;
     color: var(--text_color);
+    /* border: red 1px solid; */
 }
 nav ul li a::after {
     content: '';
@@ -60,10 +78,24 @@ nav ul li a::after {
     transition: .3s ease-in-out;
 }
 nav ul li a:hover, nav li a.activeLink {
-    color: var(--primary);
+    /* color: var(--primary); */
     transition: .3s ease-in-out;
 }
 nav ul li a:hover::after {
     width: 100%;
 }
 /* -------------------Contents------------------ */
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* border: red 1px solid; */
+}
+section:nth-child(odd) {
+    background-color: var(--nthChild_odd);
+}
+.container {
+    width: 800px;
+    border: red 1px solid;
+}
