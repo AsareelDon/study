@@ -1,51 +1,89 @@
-varType = 12;
-var varType;
+////////////
+/// var ///
+//////////
+
+// varType = "Hello World";
+// var varType;
+// console.log(varType);
 // var varType;
 
-var greeter = "hey hi";
-var times = 4;
+// function getVar() {
+//     varType = "Hello World";
+//     return varType;
+// }
+// console.log(getVar());
 
-if (times > 3) {
-    var greeter = "say Hello instead"; 
-}
+////////////
+/// let ///
+//////////
 
-console.log(greeter) // "say Hello instead"
+// function getLet() {
+//     let letType = "JavaScript is !Fun";
+//     letType = "sample";
+//     // console.log(letType);
 
-const constType = "Let's learn JavaScript";
-// constType = "This is re-assignemnt of the const declared variable!";
+//     return letType;
+// }
+// console.log(getLet());
 
-if (varType > 1) {
-    let letType = "JavaScript is !fun";
-    // letType = "This is new value!"
-    console.log(constType);
-} else {
-    console.log(varType);
-}
-console.log(varType);
 
-console.log("JavaScript is !Fun");
+//////////////
+/// const ///
+////////////
 
-const targetById = document.getElementById('first-list');
-const targetByCls = document.getElementsByClassName('item-list');
-for (let index = 0; index < targetByCls.length; index++) {
-    let element = targetByCls[index];
-    console.log(element.textContent);
-}
-const targetByTag = document.getElementsByTagName('li');
-const querySel = document.querySelector('li, .item-list');
-const querySelAll = document.querySelectorAll('li:nth-child(4)');
-querySelAll.forEach(elementTxt => {
-    console.log(elementTxt.innerHTML); 
-});
+// const name = "Don";
 
-const listTag1 = document.getElementsByTagName('li');
-console.log(listTag1[0].getAttribute('id'));
-listTag1[0].setAttribute('id', 'changed-id-value')
-console.log(listTag1[0].getAttribute('id'));
+// function getName() {
+//     const name = "Don";
+//     return name;
+// }
+// console.log(name);
 
-const listTag = document.getElementsByTagName('li');
-console.log("Before", listTag[0].getAttributeNames());
-listTag[0].removeAttribute('id')
-console.log("After", listTag[0].getAttributeNames());
+// varType = "JavaScript is !fun";
+// var varType;
+// console.log(varType);
 
-const h2Element = document.getElementsByTagName('h2');
+// getElementById
+// const getFirstElement = document.getElementById("first-list");
+// console.log(getFirstElement.className);
+
+// getElementsByClassName
+// const getElements = document.getElementsByClassName("item-list");
+// console.log(getElements[3].innerHTML)
+
+// getElementsByTagName
+// const getElement = document.getElementsByTagName('li');
+// console.log(getElement)(
+
+// querySelector && querySelectorAll
+// const selector = document.querySelector("li, .item-list");
+// const selectorAll = document.querySelectorAll("li");
+
+// console.log("querySelector => ", selector.textContent);
+// // console.log("querySelector => ", selectorAll);
+
+// selectorAll.forEach(element => {
+//     console.log("querySelector => ", element.innerText);
+// })
+
+// const selectorOfList = document.querySelector("li:last-child");
+// console.log("querySelector => ", selectorOfList.textContent);
+// selectorOfList.innerHTML = "JavaScript is !fun";
+
+// getAttribute
+// const selectorOfList = document.querySelector("li:last-child");
+// console.log("After => ", selectorOfList.getAttribute("id"));
+// selectorOfList.setAttribute("id", "last-child");
+// console.log("After => ", selectorOfList.getAttribute("id"));
+// selectorOfList.removeAttribute("id");
+// console.log("After remove => ", selectorOfList.getAttribute("id"));
+// selectorOfList.style.listStyle = "number";
+
+// const selectorOfList = document.querySelectorAll("li");
+// selectorOfList.forEach((element, index) => {
+//     element.addEventListener("click", () => onClickChangeBackground(index));
+// });
+
+// function onClickChangeBackground(index) {
+//     selectorOfList[index].classList.toggle("list-bg");
+// }
