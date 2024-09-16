@@ -97,6 +97,7 @@ section:nth-child(odd) {
 }
 #home {
     background-color: var(--primary);
+    /* border: red 1px solid; */
 }
 #home .container {
     display: flex;
@@ -160,8 +161,10 @@ section:nth-child(odd) {
     border-style: none;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 2px 6px 0 rgba(0,0,0,0.19);
 }
 #home .container .download-file:hover {
     background-color: var(--accent);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 2px 6px 0 rgba(0,0,0,0.19);
 }
+
+/* -------------------Sample Box------------------ */
