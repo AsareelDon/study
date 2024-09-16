@@ -36,8 +36,19 @@ h2 {
     font-size: 22px;
     width: 100%;
 }
+.bttn {
+    padding: 7px 12px;
+    cursor: pointer;
+}
 .item-list {
     list-style: none;
     padding: 7px 8px;
     border: 1px solid #3b3b3b;
+    cursor: pointer;
+}
+.list-bg {
+    background-color: #3b3b3b;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+    /* transform: rotate(180deg); */
 }
